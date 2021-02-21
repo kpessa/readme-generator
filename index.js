@@ -7,9 +7,9 @@ const test = require('./assets/test/editor');
 const testData = require('./assets/data/testData');
 const writeToFile = require('./assets/functions/writeToFile');
 
-function loadPrompts() {
+async function loadPrompts() {
   inquirer.prompt(questions).then(answers => {
-    writeToFile('./README.md', answers);
+    writeToFile('.output/README.md', answers);
   });
 }
 
@@ -28,7 +28,6 @@ async function init() {
       break;
     default:
       answers = await loadPrompts();
-      writeToFile('./output/README.md', answers);
   }
 }
 
