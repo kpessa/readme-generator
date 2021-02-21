@@ -1,44 +1,37 @@
 // TODO: Include packages needed for this application
+// * DONE
 const fs = require('fs');
 const inquirer = require('inquirer');
-const testData = require('./testData');
-const generateReadme = require('./generateReadme');
+let questions = require('./assets/data/questions');
+const test = require('./assets/test/editor');
+const testData = require('./assets/data/testData');
+const writeToFile = require('./assets/functions/writeToFile');
 
-// TODO: Create an array of questions for user input
-const questions = [
-  {
-    type: 'input',
-    name: 'title',
-    message: "What is your repository's title?",
-    validate: value => {
-      if (value) return true;
-      return 'Please enter a valid title';
-    },
-  },
-];
+function loadPrompts() {
+  inquirer.prompt(questions).then(answers => {
+    console.log('\nAnswers:');
+    console.log(JSON.stringify(answers, null, '  '));
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-  fs.writeFileSync(fileName, generateReadme(data), err => {
-    if (err) throw err;
-    console.log('Readme successfully created.  See "README.md" to see output');
+    writeToFile('./README.md', answers);
   });
 }
 
 // TODO: Create a function to initialize app
-function init() {
+async function init() {
   const args = process.argv.slice(2, process.argv.length);
   let answers = '';
-  if (args.includes('-t') || args.includes('test')) {
-    answers = testData;
-  } else {
-    inquirer.prompt(questions).then(answers => {
-      console.log('\nAnswers:');
-      console.log(JSON.stringify(answers, null, '  '));
-    });
-  }
 
-  writeToFile('./README.md', answers);
+  switch (true) {
+    case args.includes('-t') || args.includes('test'):
+      test();
+      break;
+    case args.includes('-td') || args.includes('testData'):
+      answers = testData;
+      writeToFile('./README.md', answers);
+      break;
+    default:
+      answers = await loadPrompts();
+  }
 }
 
 // Function call to initialize app
