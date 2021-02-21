@@ -5,9 +5,6 @@
 A node application to generate readme's for github projects.
 
 ## Table of Contents
-- [generate-readme](#generate-readme)
-  - [Description](#description)
-  - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
   - [License](#license)
