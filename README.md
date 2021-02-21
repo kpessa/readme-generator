@@ -1,6 +1,7 @@
 <a href="https://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-yellow" alt="MIT badge"></a>
   # readme-generator
   
+![Screencast demonstrating project](./assets/images/screencast.gif)  
 ## Description
 A node.js application to generate readme's for github projects.
 
