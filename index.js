@@ -9,7 +9,7 @@ const writeToFile = require('./assets/functions/writeToFile');
 
 async function loadPrompts() {
   inquirer.prompt(questions).then(answers => {
-    writeToFile('.output/README.md', answers);
+    writeToFile('./output/README.md', answers);
   });
 }
 
