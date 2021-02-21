@@ -31,7 +31,7 @@ https://choosealicense.com/licenses/mit
 Feel free to contribute.
 
 ## Tests
-You can run test data with extra argument in command line '-td' or 'testData'
+You can run test data with without going through the prompts by adding the flag '-td' `node index.js -td`
 
 ## Questions
 Visit my [Github](http://www.github.com/kpessa) at github.com/kpessa
