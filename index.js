@@ -9,9 +9,6 @@ const writeToFile = require('./assets/functions/writeToFile');
 
 function loadPrompts() {
   inquirer.prompt(questions).then(answers => {
-    console.log('\nAnswers:');
-    console.log(JSON.stringify(answers, null, '  '));
-
     writeToFile('./README.md', answers);
   });
 }
@@ -31,6 +28,7 @@ async function init() {
       break;
     default:
       answers = await loadPrompts();
+      writeToFile('./output/README.md', answers);
   }
 }
 
