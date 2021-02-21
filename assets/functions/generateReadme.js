@@ -1,8 +1,9 @@
 const { title } = require('../data/testData');
+const licenses = require('../data/licenses');
 
 const generateReadme = data => {
   const { title, description, installation, usage, license, contribution, tests } = data;
-  return `![license badge](https://img.shields.io/badge/license-${license}-yellow)
+  return `${renderLicenseLink(license)}
   # ${title}
   
 ## Description
@@ -23,7 +24,6 @@ ${installation}
 ${usage}
 
 ## License
-<a href="${renderLicenseLink(license.toLowerCase())}"><img src="https://img.shields.io/badge/license-${license}-yellow" alt="license badge"></a>
 ${renderLicenseSection(license)}
 
 ## Contributing
@@ -36,20 +36,23 @@ ${tests}
   `;
 };
 
+// TODO: Create a function that returns a license badge based on which license is passed in
+// If there is no license, return an empty string
+function renderLicenseBadge(license) {
+  return `<img src="https://img.shields.io/badge/license-${license}-yellow" alt="${license} badge">`;
+}
+
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return `https://choosealicense.com/licenses/${license}/`;
+  return `<a href="https://choosealicense.com/licenses/${licenses[license].id}">${renderLicenseBadge(license)}</a>`;
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  console.log(license);
-  switch (license.toLowerCase()) {
-    case 'mit':
-      return `A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`;
-  }
+  return `${renderLicenseLink(license)}
+  <p>${licenses[license].description}</p>`;
 }
 
 module.exports = generateReadme;

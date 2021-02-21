@@ -6,7 +6,7 @@ let testData = {
   usage: 'Run in terminal with node index.js and fill out prompts to generate readme',
   contribution: 'Feel free to contribute.',
   tests: "You can run test data with extra argument in command line '-td' or 'testData'",
-  license: 'MIT',
+  license: 'GNU General Public License v3.0',
 };
 
 module.exports = testData;

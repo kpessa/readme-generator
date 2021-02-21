@@ -1,3 +1,5 @@
+const licenses = require('./licenses');
+
 // TODO: Create an array of questions for user input
 // ! Make more questions
 const questions = [
@@ -48,7 +50,7 @@ const questions = [
     type: 'list',
     name: 'license',
     message: 'What License did you use?',
-    choices: 'MIT, GNU, Apache'.split(', '),
+    choices: Object.keys(licenses),
   },
 ];
 
