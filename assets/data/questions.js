@@ -6,7 +6,16 @@ const questions = [
   {
     type: 'input',
     name: 'github',
-    message: 'What is your github username?',
+    message: 'github username?',
+    validate: value => {
+      if (value) return true;
+      return 'Please enter a valid username';
+    },
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'email?',
     validate: value => {
       if (value) return true;
       return 'Please enter a valid username';
@@ -15,7 +24,7 @@ const questions = [
   {
     type: 'input',
     name: 'title',
-    message: "What is your repository's title?",
+    message: "repository's title?",
     validate: value => {
       if (value) return true;
       return 'Please enter a valid title';
@@ -24,32 +33,32 @@ const questions = [
   {
     type: 'input',
     name: 'description',
-    message: "What is your repository's description?",
+    message: "repository's description?",
   },
   {
     type: 'input',
     name: 'installation',
-    message: "What is your repository's installation instructions?",
+    message: 'installation instructions?',
   },
   {
     type: 'input',
     name: 'usage',
-    message: "What is your repository's usage information?",
+    message: 'usage information?',
   },
   {
     type: 'input',
     name: 'contribution',
-    message: "What is your repository's contribution guidelines?",
+    message: 'contribution guidelines?',
   },
   {
     type: 'input',
     name: 'tests',
-    message: "What is your repository's test instructions?",
+    message: 'test instructions?',
   },
   {
     type: 'list',
     name: 'license',
-    message: 'What License did you use?',
+    message: 'license?',
     choices: Object.keys(licenses),
   },
 ];

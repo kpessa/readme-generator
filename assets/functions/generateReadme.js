@@ -2,7 +2,7 @@ const { title } = require('../data/testData');
 const licenses = require('../data/licenses');
 
 const generateReadme = data => {
-  const { title, description, installation, usage, license, contribution, tests } = data;
+  const { github, email, title, description, installation, usage, license, contribution, tests } = data;
   return `${renderLicenseLink(license)}
   # ${title}
   
@@ -33,6 +33,10 @@ ${contribution}
 ${tests}
 
 ## Questions
+Visit my [Github](http://www.github.com/${github}) at github.com/${github}
+
+or
+email me at [${email}](mailto:${email})
   `;
 };
 

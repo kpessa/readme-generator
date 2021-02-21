@@ -27,7 +27,7 @@ async function init() {
       break;
     case args.includes('-td') || args.includes('testData'):
       answers = testData;
-      writeToFile('./README.md', answers);
+      writeToFile('./output/README.md', answers);
       break;
     default:
       answers = await loadPrompts();
