@@ -7,14 +7,14 @@ const test = require('./assets/test/editor');
 const testData = require('./assets/data/testData');
 const writeToFile = require('./assets/functions/writeToFile');
 
-async function loadPrompts() {
+function loadPrompts() {
   inquirer.prompt(questions).then(answers => {
     writeToFile('./output/README.md', answers);
   });
 }
 
 // TODO: Create a function to initialize app
-async function init() {
+function init() {
   const args = process.argv.slice(2, process.argv.length);
   let answers = '';
 
@@ -27,7 +27,7 @@ async function init() {
       writeToFile('./output/README.md', answers);
       break;
     default:
-      answers = await loadPrompts();
+      answers = loadPrompts();
   }
 }
 
